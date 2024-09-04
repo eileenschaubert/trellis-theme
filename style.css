@@ -25,12 +25,19 @@ Requires PHP: 5.6
 	- Box Sizing
 	- Float Clearing
 - Defaults
+	- Variables for 
+		- colors
+		- fonts
+		- editor color palette
+		- margins and padding
 	- Typographical Elements
 	- Headings
 	- Objects
 	- Gallery
 	- Forms
+	- Trellis Buttons
 	- Tables
+	- Gravity Forms
 	- Screen Reader Text
 - Structure and Layout
 	- Site Container
@@ -46,28 +53,45 @@ Requires PHP: 5.6
 - Plugins
 	- Genesis eNews Extended
 	- Genesis Simple FAQ
+	- Mailchimp Contact Form (Home Page)
 	- WPForms
+	- Responsive Menu Pro
+	- Events Calendar and Community Events
 - Skip Links
 - Site Header
 	- Title Area
 - Site Navigation
 	- Responsive Menu
 	- Header Menu
-	- Footer Menu
+	- Footer (Moved to Banner) Menu
 - Content Area
 	- Entry Content
 	- Entry Meta
 	- Pagination
 	- Entry Comments
+	- Home Page Cover Block
+	- Page and Block Customizations
+	- Custom and Reusable Block Styles
+		- Reusable Block Quote
+		- Three Column Block
+		- Three Column Block - Events Block Home Page
+		- Three Column Block - Connect Block on Medicare Page
+	- Post Grid Common Elements
+	- Accordions
 - Sidebar
 - Footer Widgets
 - Site Footer
 - Media Queries
-	- Min-width: 960px
+		- Max-width: 600px
+		- Reverse Block Stacking
+	- Min-width: 768 (TBD)
+		- Desktop Menu related items
+- Min-width: 960px
 		- Site Header
 		- Genesis Menu
 		- Responsive Menu
 		- Header Menu
+		- Banner Menu
 		- Site Inner
 		- Content
 		- Sidebar
@@ -76,6 +100,10 @@ Requires PHP: 5.6
 		- Column Classes
 		- Entry Misc.
 		- Footer Widgets
+		- Page and Block Customizations
+			- Horizontal Post Grid
+			- Gravity View
+			- Dementia Friendly Page
 - Print Styles
 */
 
@@ -145,6 +173,11 @@ sup {
 img {
   border-style: none;
 }
+
+.wp-block-image .border-img img {
+  border: 1px solid #ccc;
+}
+
 button,
 input,
 optgroup,
@@ -231,6 +264,10 @@ template {
 }
 /* stylelint-enable */
 
+html {
+  -ms-text-size-adjust: 100%;
+}
+
 /* Box Sizing
 --------------------------------------------- */
 
@@ -284,9 +321,314 @@ html {
   display: table;
 }
 
-/* Defaults
+/* Defaults and Variables
 ---------------------------------------------------------------------------- */
+:root {
+  /* colors - change names & values with final spec */
+  --blue-primary: #13294b;
+  --blue-text: #13294b;
+  --orange-primary: #ff7f32;
+  --blue-sec-md: #0067b9;
+  --blue-sec-lt: #407ec9;
+  --orange-secondary: #ff6900;
+  --green-primary: #97d700;
+  --green-secondary: #78be21;
+  --brand-blk: #53565a;
+  --brand-gry-dk: #888b8d;
+  --brand-gry-md: #a7a8a9;
+  --brand-gry-lt: #d0d3d4;
+  /* metroaging brand colors */
+  --purple-background: #5f6689;
+  --maaa-blue-text: #00215b;
+  --maaa-olive: #8a9f2a;
+  --global--color-gray: #aaa;
+  --global--color-secondary: var(--maaa-olive);
+  --maaa-background-secondary: #f1f1f1;
+  --maaa-background-secondary-text: var(--maaa-blue-text);
+  --maaa-background-gray: #999;
+  --maaa-text-link: #3344dd;
+  --maaa-text-link-hover: #d86344;
+  --maaa-text-link-visited: #0c2384;
+  --maaa-text-link-border: #a6a2a6;
 
+  /* pulled from 2021 theme */
+  /* Colors */
+  --global--color-black: #000;
+  --global--color-gray: #39414d;
+  --global--color-light-gray: #ccc;
+  --global--color-white: #fff;
+
+  /* Font Size */
+  --global--font-size-base: 1.25rem;
+  --global--font-size-xs: 1rem;
+  --global--font-size-sm: 1.125rem;
+  --global--font-size-md: 1.25rem;
+  --global--font-size-lg: 1.4rem;
+  --global--font-size-xl: 2.25rem;
+  --global--font-size-xxl: 4rem;
+  --global--font-size-xxxl: 5rem;
+  --global--font-size-page-title: 3.125rem;
+  --global--font-size-page-title: clamp(2.5rem, 2.0313rem + 2.0833vw, 3.125rem);
+  --global--letter-spacing: normal;
+
+  /* Headings */
+  --heading--font-family: var(--global--font-primary);
+  --heading--font-size-h6: var(--global--font-size-xs);
+  --heading--font-size-h5: var(--global--font-size-md);
+  --heading--font-size-h4: var(--global--font-size-lg);
+  --heading--font-size-h3: calc(1.25 * var(--global--font-size-lg));
+  --heading--font-size-h3: clamp(1.5rem, 1.2188rem + 1.25vw, 1.875rem);
+  --heading--font-size-h2: 2.625rem;
+  --heading--font-size-h2: clamp(2.125rem, 1.75rem + 1.67vw, 2.625rem);
+  --heading--font-size-h1: 3.125rem;
+  --heading--font-size-h1: clamp(2.5rem, 2.0313rem + 2.0833vw, 3.125rem);
+  --heading--font-weight: normal;
+  --heading--font-weight-page-title: 300;
+  --heading--font-weight-strong: 600;
+}
+
+/* Gutenberg color picker options
+-- see editor-color-palette in functions.php */
+.has-ma-font-color {
+  color: #00215b;
+}
+
+.has-ma-font-background-color {
+  background-color: #00215b;
+}
+
+.has-ma-dk-blue-color {
+  color: #002855;
+}
+
+.has-ma-dk-blue-background-color {
+  background-color: #002855;
+}
+
+.has-ma-purple-color {
+  color: #5f6689;
+}
+
+.has-ma-purple-background-color {
+  background-color: #5f6689;
+}
+
+.has-ma-olive-color {
+  color: #8a9f2a;
+}
+
+.has-ma-olive-background-color {
+  background-color: #8a9f2a;
+}
+
+.has-ma-white-color {
+  color: #fff;
+}
+
+.has-ma-white-background-color {
+  background-color: #fff;
+}
+
+.has-ma-black-color {
+  color: #000;
+}
+
+.has-ma-black-background-color {
+  background-color: #000;
+}
+
+.has-ma-sec-bkgd-color {
+  color: #f1f1f1;
+}
+
+.has-ma-sec-bkgd-background-color {
+  background-color: #f1f1f1;
+}
+
+.has-blu-pri-color {
+  color: #13294b;
+}
+
+.has-blu-pri-background-color {
+  background-color: #13294b;
+}
+.has-blu-md-color {
+  color: #0067b9;
+}
+
+.has-blu-md-background-color {
+  background-color: #0067b9;
+}
+
+.has-blu-lt-color {
+  color: #407ec9;
+}
+
+.has-blu-lt-background-color {
+  background-color: #407ec9;
+}
+
+.has-org-pri-color {
+  color: #ff7f32;
+}
+
+.has-org-pri-background-color {
+  background-color: #ff7f32;
+}
+
+.has-org-sec-color {
+  color: #ff6900;
+}
+
+.has-org-sec-background-color {
+  background-color: #ff6900;
+}
+
+.has-grn-pri-color {
+  color: #97d700;
+}
+
+.has-grn-pri-background-color {
+  background-color: #97d700;
+}
+
+.has-grn-sec-color {
+  color: #78be21;
+}
+
+.has-grn-sec-background-color {
+  background-color: #78be21;
+}
+
+.has-gry-dk-color {
+  color: #888b8d;
+}
+
+.has-gry-dk-background-color {
+  background-color: #888b8d;
+}
+
+.has-gry-md-color {
+  color: #a7a8a9;
+}
+
+.has-gry-md-background-color {
+  background-color: #a7a8a9;
+}
+
+.has-gry-lt-color {
+  color: #d0d3d4;
+}
+
+.has-gry-lt-background-color {
+  background-color: #d0d3d4;
+}
+
+.has-sec-bkgd-color {
+  color: #f1f1f1;
+}
+
+.has-sec-bkgd-background-color {
+  background-color: #f1f1f1;
+}
+
+.has-brand-blk-color {
+  color: #53565a;
+}
+
+.has-brand-blk-background-color {
+  background-color: #53565a;
+}
+
+.has-black-color {
+  color: #000000;
+}
+
+.has-black-background-color {
+  background-color: #000000;
+}
+
+.has-white-color {
+  color: #ffffff;
+}
+
+.has-white-background-color {
+  background-color: #ffffff;
+}
+
+/* Margins Padding */
+.margin-bottom-zero {
+  margin-bottom: 0;
+}
+
+.mt-zero {
+  margin-top: 0;
+}
+
+.mt-30 {
+  margin-top: 30px;
+}
+
+.mb-14 {
+  margin-bottom: 14px;
+}
+
+.mb-28 {
+  margin-bottom: 28px;
+}
+
+.mb-40 {
+  margin-bottom: 40px;
+}
+
+.mb-60 {
+  margin-bottom: 60px;
+}
+
+.mb-80 {
+  margin-bottom: 80px;
+}
+
+/* 'Funded by' block should sit on the footer - also in media queries */
+.mb-mba-block {
+  margin-bottom: -40px !important;
+}
+
+/* For cover block that should sit on the footer - also in media queries */
+.on-top-footer {
+  margin-bottom: -40px !important;
+}
+
+/* For columns block that should sit on the footer - also in media queries */
+.col-on-top-footer {
+  margin-bottom: -40px !important;
+}
+
+/* class used to ensure there is padding on mobile for full-width blocks */
+.pd-lr-15 {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.pd-lr-30 {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.pd-r-15 {
+  padding-right: 15px;
+}
+
+.wp-block-group.block-margins,
+.gb-block-container.block-margins {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+/* adjust for tall header on page */
+[id] {
+  scroll-margin-top: 400px;
+}
 /* Typographical Elements
 --------------------------------------------- */
 
