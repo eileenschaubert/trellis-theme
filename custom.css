@@ -20,7 +20,6 @@ Requires PHP: 5.6
 */
 
 /* Table of Contents
-	- Typographical Elements
 	- Headings
 	- Objects
 	- Gallery
@@ -97,178 +96,18 @@ Requires PHP: 5.6
 - Print Styles
 */
 
+/* Box Sizing
+--------------------------------------------- */
+/* Float Clearing
+--------------------------------------------- */
+
+/* Defaults and Variables
+---------------------------------------------------------------------------- */
 /* Typographical Elements
 --------------------------------------------- */
-@font-face {
-  font-family: "Acta Book";
-  src: url("fonts/Acta-Book.woff2") format("woff2"),
-    url("fonts/Acta-Book.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-.font-8 {
-  font-family: "Acta Book";
-}
-
-@font-face {
-  font-family: "Acta Book Italic";
-  src: url("fonts/Acta-BookItalic2.woff2") format("woff2"),
-    url("fonts/Acta-BookItalic2.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-.font-9 {
-  font-family: "Acta Book Italic";
-}
-
-@font-face {
-  font-family: "Acta Headline Bold Italic";
-  src: url("fonts/ActaHeadline-BoldItalic2.woff2") format("woff2"),
-    url("fonts/ActaHeadline-BoldItalic2.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-.font-45 {
-  font-family: "Acta Headline Bold Italic";
-}
-
-@font-face {
-  font-family: "Acta Headline Bold";
-  src: url("fonts/ActaHeadline-Bold.woff2") format("woff2"),
-    url("fonts/ActaHeadline-Bold.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-.font-48 {
-  font-family: "Acta Headline Bold";
-}
-
-html {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-}
-
-body {
-  background-color: #fff;
-  color: var(--blue-text);
-  font-family: "Red Hat Display", "Arial", sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 1.625;
-  margin: 0;
-  overflow-x: hidden;
-}
-
-button,
-input:focus,
-input[type="button"],
-input[type="reset"],
-input[type="submit"],
-textarea:focus,
-.button,
-.gallery img {
-  transition: all 0.2s ease-in-out;
-}
-
-p > a,
-p > strong > a,
-li > a {
-  color: var(--maaa-text-link);
-  text-decoration: none;
-  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
-  border-bottom: 1px solid;
-  border-color: var(--maaa-text-link-border);
-  font-weight: 500;
-}
-
-h3 > a {
-  color: var(--blue-text);
-  text-decoration: none;
-  border-bottom: none;
-}
-
-a:hover,
-h2.entry-title a:hover,
-h3 a:hover {
-  color: var(--maaa-text-link-hover);
-  text-decoration: none;
-}
-
-.has-ma-purple-background-color a {
-  color: #fff;
-  border-bottom: 1px solid;
-  border-color: currentColor;
-}
-
-.has-ma-purple-background-color a:focus,
-.has-ma-purple-background-color a:hover {
-  color: var(--global--color-light-gray);
-}
-
-p {
-  margin: 0 0 15px;
-  padding: 0;
-}
-
-ol,
-ul {
-  margin: 0;
-  padding: 0;
-}
-
-li {
-  list-style-type: none;
-}
-
-hr {
-  border: 0;
-  border-collapse: collapse;
-  border-bottom: 1px solid currentColor;
-  clear: both;
-  color: #eee;
-  margin: 1.65em auto;
-}
-
-b,
-strong {
-  font-weight: 700;
-}
-
-blockquote,
-cite,
-em,
-i {
-  font-style: italic;
-  line-height: 0.7;
-}
-
-mark {
-  background: #ddd;
-  color: #333;
-}
-
-blockquote {
-  margin: 0;
-}
-
-.site-container .entry-content .wp-block-quote cite {
-  color: var(--blue-text);
-}
 
 /* Headings
 --------------------------------------------- */
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Acta Book", "Times New Roman", serif;
-  font-weight: 400;
-  line-height: 1.1;
-  margin: 0 0 15px;
-}
 
 /* added later - could probably be refactored */
 h1,
@@ -514,11 +353,6 @@ input[type="checkbox"],
 input[type="image"],
 input[type="radio"] {
   width: auto;
-}
-
-::-ms-input-placeholder {
-  color: #333;
-  opacity: 1;
 }
 
 :-ms-input-placeholder {
@@ -3461,7 +3295,6 @@ p.intro {
   .site-header {
     position: -webkit-sticky;
     position: sticky;
-    /* position: absolute; */
     top: 0;
     width: 100%;
     z-index: 9999;

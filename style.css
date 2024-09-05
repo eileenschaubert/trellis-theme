@@ -631,6 +631,49 @@ html {
 }
 /* Typographical Elements
 --------------------------------------------- */
+@font-face {
+  font-family: "Acta Book";
+  src: url("fonts/Acta-Book.woff2") format("woff2"),
+    url("fonts/Acta-Book.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+.font-8 {
+  font-family: "Acta Book";
+}
+
+@font-face {
+  font-family: "Acta Book Italic";
+  src: url("fonts/Acta-BookItalic2.woff2") format("woff2"),
+    url("fonts/Acta-BookItalic2.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+.font-9 {
+  font-family: "Acta Book Italic";
+}
+
+@font-face {
+  font-family: "Acta Headline Bold Italic";
+  src: url("fonts/ActaHeadline-BoldItalic2.woff2") format("woff2"),
+    url("fonts/ActaHeadline-BoldItalic2.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+.font-45 {
+  font-family: "Acta Headline Bold Italic";
+}
+
+@font-face {
+  font-family: "Acta Headline Bold";
+  src: url("fonts/ActaHeadline-Bold.woff2") format("woff2"),
+    url("fonts/ActaHeadline-Bold.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+.font-48 {
+  font-family: "Acta Headline Bold";
+}
 
 html {
   -moz-osx-font-smoothing: grayscale;
@@ -639,8 +682,8 @@ html {
 
 body {
   background-color: #fff;
-  color: #333;
-  font-family: "Source Sans Pro", sans-serif;
+  color: var(--blue-text);
+  font-family: "Red Hat Display", "Arial", sans-serif;
   font-size: 18px;
   font-weight: 400;
   line-height: 1.625;
@@ -659,20 +702,49 @@ textarea:focus,
   transition: all 0.2s ease-in-out;
 }
 
-a {
-  color: #0073e5;
-  text-decoration: underline;
+p > a,
+p > strong > a,
+li > a {
+  color: var(--maaa-text-link);
+  text-decoration: none;
   transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  border-bottom: 1px solid;
+  border-color: var(--maaa-text-link-border);
+  font-weight: 500;
 }
 
 a:focus,
 a:hover {
-  color: #333;
+  color: var(--maaa-text-link-hover);
   text-decoration: none;
 }
 
+h3 > a {
+  color: var(--blue-text);
+  text-decoration: none;
+  border-bottom: none;
+}
+
+a:hover,
+h2.entry-title a:hover,
+h3 a:hover {
+  color: var(--maaa-text-link-hover);
+  text-decoration: none;
+}
+
+.has-ma-purple-background-color a {
+  color: #fff;
+  border-bottom: 1px solid;
+  border-color: currentColor;
+}
+
+.has-ma-purple-background-color a:focus,
+.has-ma-purple-background-color a:hover {
+  color: var(--global--color-light-gray);
+}
+
 p {
-  margin: 0 0 28px;
+  margin: 0 0 15px;
   padding: 0;
 }
 
@@ -705,6 +777,7 @@ cite,
 em,
 i {
   font-style: italic;
+  line-height: 0.7;
 }
 
 mark {
@@ -714,6 +787,18 @@ mark {
 
 blockquote {
   margin: 30px;
+}
+mark {
+  background: #ddd;
+  color: #333;
+}
+
+blockquote {
+  margin: 0;
+}
+
+.site-container .entry-content .wp-block-quote cite {
+  color: var(--blue-text);
 }
 
 /* Headings
@@ -725,10 +810,10 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Acta Book", "Times New Roman", serif;
   font-weight: 400;
-  line-height: 1.2;
-  margin: 0 0 20px;
+  line-height: 1.1;
+  margin: 0 0 15px;
 }
 
 h1 {
@@ -763,6 +848,128 @@ h5 {
 h6 {
   font-size: 16px;
 }
+/* Refactor */
+/* added later - could probably be refactored */
+h1,
+h2,
+h3 {
+  margin: 30px 0 15px;
+}
+
+h4,
+h5,
+h6 {
+  font-family: "Red Hat Display", "Arial", sans-serif;
+  margin-bottom: 6px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+h1 {
+  /* font-size: 50px; */
+  font-size: 3.125rem;
+  font-size: clamp(2.5rem, 2.0313rem + 2.0833vw, 3.125rem);
+}
+
+.home-h1 {
+  margin-top: 115px;
+}
+
+h2 {
+  /* 	font-size: 36px; */
+  /* 	font-size: var(--heading--font-size-h2); */
+  /* 	font-size: clamp(1.75rem, 1.375rem + 1.67vw, 2.25rem); */
+  /* font-size: 42px; */
+  font-size: var(--heading--font-size-h1);
+  font-size: clamp(2.125rem, 1.75rem + 1.67vw, 2.625rem);
+}
+
+h3 {
+  /* 	font-size: 30px; */
+  font-size: var(--heading--font-size-h3);
+  font-size: clamp(1.5rem, 1.2188rem + 1.25vw, 1.875rem);
+}
+
+h4 {
+  /* 	font-size: 20px; */
+  font-size: var(--heading--font-size-h4);
+}
+
+.entry-content h3,
+.entry-content h4 {
+  font-weight: 400;
+}
+
+.entry-content h4 {
+  margin-top: 20px;
+  font-weight: 500;
+}
+
+h5 {
+  /* 	font-size: 18px; */
+  font-size: var(--heading--font-size-h5);
+}
+
+h6 {
+  /* 	font-size: 16px; */
+  font-size: var(--heading--font-size-h6);
+}
+
+/* Used to make custom heading sizes responsive on mobile */
+.resp-52-65 {
+  font-size: 4.063rem;
+  font-size: clamp(3.25rem, 2.6402rem + 2.71vw, 4.063rem);
+}
+
+.resp-40-50 {
+  font-size: 3.125rem;
+  font-size: clamp(2.5rem, 2.0313rem + 2.0833vw, 3.125rem);
+}
+
+.resp-34-42 {
+  font-size: 2.625rem;
+  font-size: clamp(2.125rem, 1.75rem + 1.67vw, 2.625rem);
+}
+
+.resp-32-40 {
+  font-size: 2.5rem;
+  font-size: clamp(2rem, 1.625rem + 1.67vw, 2.5rem);
+}
+
+.resp-28-36 {
+  font-size: 2.25rem;
+  font-size: clamp(1.75rem, 1.375rem + 1.67vw, 2.25rem);
+}
+
+.resp-24-30 {
+  font-size: 1.875rem;
+  font-size: clamp(1.5rem, 1.2188rem + 1.25vw, 1.875rem);
+}
+
+.resp-34-42 {
+  font-size: 2.625rem;
+  font-size: clamp(2.125rem, 1.75rem + 1.67vw, 2.625rem);
+}
+
+.resp-38-48 {
+  font-size: 3rem;
+  font-size: clamp(2.375rem, 1.9063rem + 2.0833vw, 3rem);
+}
+
+.resp-43-54 {
+  font-size: 3.375rem;
+  font-size: clamp(2.688rem, 2.1728rem + 2.29vw, 3.375rem);
+}
+
+.resp-46-58 {
+  font-size: 3.625rem;
+  font-size: clamp(2.875rem, 2.3125rem + 2.5vw, 3.625rem);
+}
+
+.resp-80-100 {
+  font-size: 6.25rem;
+  font-size: clamp(5rem, 4.0625rem + 4.1667vw, 6.25rem);
+}
 
 /* Objects
 --------------------------------------------- */
@@ -783,6 +990,10 @@ img {
 
 figure {
   margin: 0;
+}
+
+figure > a {
+  border-bottom: none;
 }
 
 /* Gallery
@@ -857,14 +1068,14 @@ figure {
   text-align: center;
 }
 
-/* Forms
+/* Forms and Buttons
 --------------------------------------------- */
 
 input,
 select,
 textarea {
   background-color: #fff;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
   color: #333;
   font-size: 18px;
   font-weight: 400;
@@ -891,7 +1102,7 @@ input[type="radio"] {
 
 ::placeholder {
   color: #333;
-  opacity: 1;
+  opacity: 0.6;
 }
 
 button,
@@ -901,14 +1112,14 @@ input[type="submit"],
 .site-container div.wpforms-container-full .wpforms-form input[type="submit"],
 .site-container div.wpforms-container-full .wpforms-form button[type="submit"],
 .button {
-  background-color: #333;
+  background-color: var(--blue-sec-md);
   border: 0;
-  border-radius: 5px;
+  border-radius: 2rem;
   color: #fff;
   cursor: pointer;
-  font-size: 16px;
-  font-weight: 600;
-  padding: 15px 30px;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 10px 30px;
   text-align: center;
   text-decoration: none;
   white-space: normal;
@@ -941,7 +1152,7 @@ input[type="submit"]:hover,
   button[type="submit"]:hover,
 .button:focus,
 .button:hover {
-  background-color: #0073e5;
+  background-color: var(--orange-primary) !important;
   border-width: 0;
   color: #fff;
 }
@@ -974,6 +1185,290 @@ input[type="submit"]:hover,
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button {
   display: none;
+}
+
+/* adjust for class change to buttons in WP5.7 */
+.wp-block-buttons.aligncenter {
+  justify-content: center;
+}
+
+/* Responsive Menu Pro 
+---------------------------------------------------- */
+button#responsive-menu-pro-button,
+button#responsive-menu-pro-button:hover,
+button#responsive-menu-pro-button:active,
+button#responsive-menu-pro-button:focus {
+  background-color: var(--blue-primary) !important;
+}
+
+#responsive-menu-pro-button {
+  border-radius: 0 !important;
+}
+
+#responsive-menu-pro-item-1048 > a,
+#responsive-menu-pro-item-1050 > a {
+  line-height: 26px !important;
+}
+
+.responsive-menu-pro-label {
+  font-weight: 400 !important;
+}
+
+/* Trellis Buttons 
+---------------------------------------------------- */
+.site-container
+  .wp-block-button.tr-cover-button.slidewb
+  .wp-block-button__link {
+  color: var(--blue-primary) !important;
+  font-weight: 600;
+  padding: 10px 30px;
+  background-color: #fff;
+}
+
+.site-container
+  .wp-block-button.tr-cover-button.slidewb
+  .wp-block-button__link:hover {
+  color: #fff !important;
+  background-color: var(--blue-primary) !important;
+}
+
+.site-container .wp-block-buttons .wp-block-button .wp-block-button__link {
+  font-size: 1rem;
+  font-family: "Red Hat Display", Arial, sans-serif;
+  font-weight: 700;
+  border-radius: 40px;
+  padding: 12px 24px;
+  line-height: 1;
+}
+
+.site-container .column-color .wp-block-button .wp-block-button__link {
+  background-color: var(--orange-primary);
+}
+
+.site-container
+  .wp-block-button
+  .has-ma-olive-background-color.wp-block-button__link,
+.site-container
+  .wp-block-button
+  .has-blu-md-background-color.wp-block-button__link {
+  background-color: var(--blue-sec-md);
+}
+
+.site-container
+  .wp-block-button
+  .has-ma-purple-background-color.wp-block-button__link {
+  background-color: var(--orange-primary);
+}
+
+.site-container .wp-block-button.call .wp-block-button__link {
+  background-color: var(--blue-sec-md);
+}
+
+.site-container
+  .wp-block-buttons
+  .wp-block-button.is-style-outline
+  .wp-block-button__link {
+  border-color: #fff;
+  color: #fff;
+  padding: 8px 28px;
+}
+
+.site-container
+  .wp-block-buttons
+  .wp-block-button.is-style-outline.has-white-background
+  .wp-block-button__link {
+  border-color: var(--blue-text);
+  color: var(--blue-text);
+  padding: 8px 28px;
+}
+
+.site-container
+  .wp-block-buttons
+  .wp-block-button.is-style-outline.btn-download
+  .wp-block-button__link {
+  border-color: var(--blue-text);
+  color: var(--blue-text);
+  padding: 8px 28px;
+  border-width: 1px;
+}
+
+.site-container .wp-block-button .wp-block-button__link:not(.has-background),
+.site-container
+  .wp-block-button
+  .wp-block-button__link:not(.has-background):focus,
+.site-container
+  .wp-block-button
+  .wp-block-button__link:not(.has-background):hover,
+.has-ma-purple-background-color a.has-ma-olive-background-color:hover {
+  color: #fff;
+}
+
+.site-container .wp-block-button .wp-block-button__link:focus,
+.site-container .wp-block-button .wp-block-button__link:hover,
+.site-container .wp-block-button.is-style-fill .wp-block-button__link:focus,
+.site-container .wp-block-button.is-style-fill .wp-block-button__link:hover,
+.horizontal-post-grid .gb-block-post-grid-more-link:focus,
+.horizontal-post-grid .gb-block-post-grid-more-link:hover {
+  box-shadow: inset 0 0 200px rgba(230, 230, 230, 0) !important;
+  background-color: var(--orange-primary) !important;
+}
+
+.site-container
+  .wp-block-buttons
+  .wp-block-button.is-style-outline.btn-download
+  .wp-block-button__link:focus,
+.site-container
+  .wp-block-buttons
+  .wp-block-button.is-style-outline.btn-download
+  .wp-block-button__link:hover {
+  background-color: var(--purple-background);
+  color: #fff;
+  border-color: var(--purple-background);
+}
+
+.site-container
+  .wp-block-buttons
+  .wp-block-button.btn-services
+  .wp-block-button__link {
+  border: 1px solid var(--purple-background);
+}
+
+.site-container
+  .wp-block-buttons
+  .wp-block-button.btn-services
+  .wp-block-button__link:focus,
+.site-container
+  .wp-block-buttons
+  .wp-block-button.btn-services
+  .wp-block-button__link:hover {
+  background-color: #fff !important;
+  color: var(--blue-text);
+  border: 1px solid var(--blue-text);
+}
+
+/* may need to change this to darker */
+.site-container .wp-block-button.is-style-outline .wp-block-button__link:focus,
+.site-container .wp-block-button.is-style-outline .wp-block-button__link:hover {
+  box-shadow: inset 0 0 200px rgba(230, 230, 230, 0.5);
+  /* 	color: gray !important; */
+  color: gray;
+  border-color: gray;
+  /* 	background-color: transparent !important; */
+  background-color: transparent;
+}
+
+.horizontal-post-grid .gb-block-post-grid-more-link:focus,
+.horizontal-post-grid .gb-block-post-grid-more-link:hover,
+.gb-block-post-grid .gb-block-post-grid-more-link:focus,
+.gb-block-post-grid .gb-block-post-grid-more-link:hover {
+  text-decoration: none !important;
+}
+
+/* Added to reflect structure changes in WP6.0 and 6.1 */
+
+.wp-block-buttons.is-layout-flex {
+  column-gap: 1rem;
+  row-gap: 1rem;
+}
+.wp-block-button.slide .wp-block-button__link {
+  background-color: var(--blue-sec-md);
+}
+.wp-block-button.slide a:hover {
+  color: var(--global--color-white);
+}
+/* give horizontal spacing for multi-buttons */
+.wp-block-buttons.is-content-justification-center .wp-block-button {
+  margin: 0 0.5rem;
+}
+
+/* for new secondary button */
+.wp-block-button.btn-color-bw.slidewb .wp-block-button__link {
+  color: var(--blue-primary);
+  background-color: var(--global--color-white);
+}
+.site-container
+  .wp-block-buttons
+  .wp-block-button.btn-color-bw.slidewb
+  .wp-block-button__link:hover {
+  color: var(--global--color-white);
+  background-color: var(--blue-primary) !important;
+}
+
+/* animation used on headings, paragraphs, quotes */
+/* hero-cover block: .animated.animated-slow; .fadeInUp */
+/* Meeting:  */
+/* Piano Man: .animated.animated-slow; .fadeInLeft */
+/* Inform, Educate: .animated.animated-slow; .fadeInUp */
+/* Quotes: .animated.animated-slow; .fadeInUp */
+/* Insights: .animated.animated-slow; .fadeInUp */
+/* Archive-Text Left on the block: .animated.animated-slow; .fadeInUpTrellis Too large for scroll */
+
+.animated {
+  -webkit-animation-duration: 1.25s;
+  animation-duration: 1.25s;
+}
+
+.animated.animated-slow {
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+}
+
+.animated-slow {
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+}
+
+.archive-fadeInUp .gb-block-post-grid-text h3,
+.archive-fadeInUp .gb-block-post-grid-text p {
+  animation-name: fadeInUpTrellis;
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  animation-timing-function: ease;
+  /* animation-delay: 0s; */
+  animation-fill-mode: both;
+}
+
+.fadeInUp {
+  animation: fadeInUp;
+}
+
+.fadeInLeft {
+  animation: fadeInLeft;
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fadeInUpTrellis {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 /* Tables
@@ -1009,6 +1504,70 @@ tr {
 th {
   font-weight: 600;
   padding: 0.5em;
+}
+
+/* Gravity Forms Specific - includes Trellis colors
+-------------------------------------------------- */
+.gv-table-view-content {
+  word-break: normal;
+}
+
+.gv-table-view td > a {
+  color: var(--maaa-text-link);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  border-bottom: 1px solid;
+  border-color: var(--maaa-text-link-border);
+}
+
+.gv-table-view td > a:hover {
+  color: var(--maaa-text-link-hover);
+  text-decoration: none;
+}
+
+.gv-search-clear:visited {
+  color: #fff;
+}
+
+.gv-table-view {
+  word-break: normal;
+}
+
+.gv-table-view.gv-table-container td {
+  line-height: 1.3;
+  padding: 0.8rem;
+}
+
+.gv-table-view tr {
+  padding: 1.2em 0.5em !important;
+}
+
+.outreach-date {
+  font-weight: 600;
+}
+
+.gv-table-view.gv-table-container.gv-table-multiple-container
+  tr:nth-child(2n + 1) {
+  background: var(--maaa-background-secondary);
+}
+
+.gv-table-view.gv-table-container.gv-table-multiple-container thead tr,
+.gv-table-view.gv-table-container.gv-table-multiple-container tfoot tr {
+  background-color: #fff !important;
+}
+
+.gv-table-view tr td::before {
+  content: none !important;
+  /* 	display: block; */
+  /* 	width: 0%; */
+}
+
+.gv-table-view.gv-table-container.gv-table-multiple-container tr {
+  border: 1px solid #ccc;
+}
+
+.gv-table-view.gv-table-container.gv-table-single-container tr {
+  border: 1px solid #eee;
 }
 
 /* Screen Reader Text
@@ -1167,28 +1726,46 @@ th {
 /* Titles
 --------------------------------------------- */
 
+.entry-title,
+.archive-title {
+  /* font-size: 50px; */
+  font-size: 3.125rem;
+  font-size: clamp(2.5rem, 2.0313rem + 2.0833vw, 3.125rem);
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+h1.entry-title {
+  margin-top: 20px;
+}
+
+/* custom class to set standard spacing across pages with h1 under cover image See Media Query */
+h1.title {
+  margin-top: 30px;
+}
+
+h2.entry-title {
+  font-size: var(--heading--font-size-h2);
+  font-size: clamp(1.75rem, 1.375rem + 1.67vw, 2.25rem);
+}
+
 .archive-description .entry-title,
-.archive-title,
 .author-box-title {
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 10px;
 }
 
-.entry-title {
-  font-size: 30px;
-  margin-bottom: 10px;
-}
-
 .entry-title a,
 .sidebar .widget-title a {
-  color: #333;
+  color: var(--blue-text);
   text-decoration: none;
+  border-bottom: none;
 }
 
 .entry-title a:focus,
 .entry-title a:hover {
-  color: #0073e5;
+  color: var(--maaa-text-hover);
 }
 
 .widget-title {
@@ -1317,6 +1894,10 @@ figcaption,
   text-align: center;
 }
 
+section#recent-posts-2 {
+  margin-top: 60px;
+}
+
 /* Featured Content
 --------------------------------------------- */
 
@@ -1395,6 +1976,76 @@ figcaption,
 
 .gs-faq__question.gs-faq--expanded::after {
   content: "\f460";
+}
+
+/* MailChimp Contact Form - front page contact form
+------------------------------------------------------ */
+
+/* force the form to abut the footer */
+div[class*="gb-layout"].alignfull.contact-form {
+  margin-bottom: -50px;
+}
+
+#mc-embedded-subscribe-form {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#mc_embed_signup_scroll {
+  display: flex;
+  flex-direction: column;
+}
+
+.mc-field-group {
+  padding-bottom: 1em;
+}
+
+/* this has customizations for front page contact form */
+.mc-field-group input {
+  display: block;
+  /*         min-height: 50px; */
+  min-height: 33px;
+  /*         width: 100%; */
+  width: 67%;
+  margin-left: auto;
+  margin-right: auto;
+  /*         padding: 6px; */
+  padding: 4px 12px;
+  background-color: #fff;
+  border: 2px solid #fff;
+  border-radius: 30px !important;
+  /* 	padding-left: 2rem; */
+  color: var(--blue-text);
+  box-shadow: rgba(10, 10, 10, 0.05) 0 1px 4px 0 inset;
+  font-size: 13px;
+}
+
+#mc-embedded-subscribe {
+  margin-bottom: 1rem;
+  /*         min-height: 50px; */
+  min-height: 40px;
+  letter-spacing: 1px;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 8px 28px;
+  background-color: transparent;
+  border: 2px solid currentColor;
+  border-radius: 2rem !important;
+  margin-top: 1rem;
+}
+
+#mc-embedded-subscribe:hover,
+#mc-embedded-subscribe:focus {
+  /* box-shadow: inset 0 0 200px rgba(230, 230, 230, 0.25); */
+  background-color: var(--global--color-white);
+  border-color: var(--global--color-white);
+  color: var(--blue-primary);
+}
+
+#mc-embedded-subscribe-form div.clear {
+  display: inline-flex;
+  justify-content: center;
 }
 
 /* WP Forms
@@ -1476,23 +2127,25 @@ figcaption,
 
 .site-header {
   background-color: #fff;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
   padding: 0 30px;
+  border-bottom: 1px solid #ccc;
 }
 
 /* Title Area
 --------------------------------------------- */
 
 .title-area {
-  float: left;
+  /* float: left;
   padding-bottom: 25px;
-  padding-top: 25px;
+  padding-top: 25px; */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .wp-custom-logo .title-area {
   max-width: 350px;
-  padding-bottom: 5px;
-  padding-top: 5px;
+  padding-bottom: 10px;
+  padding-top: 15px;
   width: 100%;
 }
 
@@ -1518,6 +2171,11 @@ figcaption,
   text-decoration: none;
 }
 
+.genesis-nav-menu a,
+.title-area a {
+  border-bottom: none;
+}
+
 .site-description,
 .wp-custom-logo .site-title {
   border: 0;
@@ -1529,7 +2187,7 @@ figcaption,
   word-wrap: normal !important;
 }
 
-/* Site Navigation
+/* Site Navigation edited for Trellis see also media queries
 ---------------------------------------------------------------------------- */
 
 .genesis-nav-menu {
@@ -1545,23 +2203,66 @@ figcaption,
 }
 
 .genesis-nav-menu a {
-  color: #333;
+  color: var(--blue-text);
   display: block;
-  font-size: 15px;
-  font-weight: 400;
+  font-size: 19px;
+  font-size: clamp(1.0625rem, 0.6875rem + 0.5vw, 1.1875rem);
+  font-weight: 500;
   outline-offset: -1px;
-  padding-bottom: 12px;
-  padding-top: 12px;
+  padding-bottom: 20px;
+  padding-top: 13px;
   text-decoration: none;
+  border-bottom: 4px solid transparent;
 }
+
+/* move bottom border to bottom edge of header */
+
+#genesis-nav-primary {
+  padding-bottom: 0;
+}
+
+.nav-primary a {
+  padding-bottom: 18px;
+}
+
+/* Set Colors for Primary Nav */
 
 .genesis-nav-menu a:focus,
 .genesis-nav-menu a:hover,
 .genesis-nav-menu .current-menu-item > a,
+.genesis-nav-menu .current-menu-item > a:hover,
+.nav-primary li:hover > a,
+.nav-primary .sub-menu li a.active {
+  color: var(--blue-text) !important;
+  text-decoration: none;
+  border-bottom: 4px solid var(--orange-primary);
+  /* margin-bottom: -4px; */
+  transition: border 0.1s ease-out 0.1s;
+}
+/* Set Colors for Primary Nav - with additional items */
+/* .genesis-nav-menu a:focus,
+.genesis-nav-menu a:hover,
+.genesis-nav-menu .current-menu-item > a,
+.genesis-nav-menu .current-menu-item > a:hover,
+.nav-primary li:hover > a,
+.nav-primary .sub-menu li a.active,
 .genesis-nav-menu .sub-menu .current-menu-item > a:focus,
 .genesis-nav-menu .sub-menu .current-menu-item > a:hover {
-  color: #0073e5;
+  color: var(--blue-text) !important;
   text-decoration: none;
+  border-bottom: 4px solid var(--orange-primary);
+  transition: border 0.1s ease-out 0.1s;
+} */
+
+.nav-primary .current-menu-parent > a {
+  border-bottom: 4px solid var(--orange-primary);
+  /* margin-bottom: -4px; */
+  transition: border 0.1s ease-out 0.1s;
+}
+
+.genesis-nav-menu.menu-primary a:focus,
+.genesis-nav-menu.menu-primary a:hover {
+  outline: 1px solid #ccc;
 }
 
 .genesis-nav-menu .sub-menu,
@@ -1578,13 +2279,26 @@ figcaption,
   padding-left: 15px;
   position: static;
   z-index: 99;
+  transition: opacity 0.4s ease-in-out;
 }
 
-.genesis-nav-menu .sub-menu a {
-  background-color: #fff;
-  font-size: 14px;
+.genesis-nav-menu .sub-menu a,
+.genesis-nav-menu .sub-menu .current-menu-item a {
+  background-color: var(--purple-background);
+  color: #fff;
+  border-top: 1px solid gray;
   position: relative;
   word-wrap: break-word;
+}
+
+.genesis-nav-menu .sub-menu a:focus,
+.genesis-nav-menu .sub-menu a:hover {
+  color: var(--blue-text);
+  text-decoration: none;
+  background-color: var(--maaa-background-secondary);
+  /* margin-bottom: -4px; */
+  border-bottom: 4px solid var(--maaa-background-secondary);
+  transition: border 0.1s ease-out 0.1s;
 }
 
 .genesis-nav-menu .menu-item:focus,
@@ -1611,7 +2325,8 @@ figcaption,
   opacity: 1;
 }
 
-.js .nav-primary {
+.js .nav-primary,
+.genesis-responsive-menu {
   display: none;
   position: relative;
 }
@@ -1697,19 +2412,22 @@ figcaption,
 .nav-primary {
   clear: left;
   padding-bottom: 15px;
-  padding-top: 15px;
+  padding-top: 61px;
   width: 100%;
 }
 
-/* Footer Menu
+/* Footer Menu => Moved to Before Header
 --------------------------------------------- */
 
 .nav-secondary {
   margin-top: 10px;
+  background-color: var(--blue-primary);
+  display: none;
 }
 
 .nav-secondary .genesis-nav-menu {
   line-height: 1.5;
+  text-align: end;
 }
 
 .nav-secondary .menu-item {
@@ -1717,9 +2435,98 @@ figcaption,
 }
 
 .nav-secondary a {
-  margin-left: 10px;
-  margin-right: 10px;
   padding: 0;
+  font-size: 16px;
+}
+
+.nav-secondary .genesis-nav-menu a:hover,
+.nav-secondary .genesis-nav-menu a:focus {
+  border-bottom: none;
+  outline: 1px #ccc solid;
+  color: #fff !important;
+}
+
+/* Events Calendar Pro with Community Events Add-on
+   Requires adjustments for Genesis
+   See also media queries
+---------------------------------------------------- */
+.tribe-common button {
+  background-color: transparent;
+}
+.tribe-common button.tribe-events-c-view-selector__button:hover {
+  background-color: transparent !important;
+}
+.tribe-common button.tribe-events-c-top-bar__datepicker-button:hover {
+  background-color: var(--tec-color-background-secondary) !important;
+}
+.caregiver-events-monthly .tribe-events-view {
+  background-color: #fff;
+}
+.caregiver-events-monthly
+  .tribe-common--breakpoint-medium.tribe-events
+  .tribe-events-l-container {
+  padding-bottom: var(--tec-spacer-4);
+  padding-top: var(--tec-spacer-8);
+}
+.caregiver-events-monthly
+  .tribe-events
+  .tribe-events-calendar-month__mobile-events-icon--event {
+  height: 1rem;
+  width: 1rem;
+}
+.caregiver-events-monthly
+  .tribe-events
+  .tribe-events-calendar-month__calendar-event-datetime {
+  color: var(--tec-color-text-primary);
+  font-weight: 500;
+}
+.care-member-benefits {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+.members .gb-accordion-title {
+  font-size: 26px;
+  font-weight: 600;
+}
+.members .gv-diy-view {
+  background-color: inherit;
+}
+.gv-diy-container.gv-container-9541 {
+  max-width: 950px;
+}
+.gv-diy-container.gv-container-9541 .gv-diy-view {
+  display: flex;
+  flex-wrap: wrap;
+}
+.gv-diy-container.gv-container-9541 .gv-diy-view {
+  margin-right: 10px;
+  width: 250px;
+  box-shadow: none;
+}
+
+#caregiverevents {
+  scroll-margin-top: 10rem;
+}
+
+button.tribe-events-c-subscribe-dropdown__button-text:hover,
+button.tribe-events-c-subscribe-dropdown__button-text:focus {
+  background-color: transparent !important;
+}
+.tribe-events-sub-nav li a {
+  background: transparent;
+}
+/* Style additional fields to match defaults */
+p.community-intro {
+  color: var(--tec-color-text-primary);
+}
+.tribe-block.tribe-block__additional-field h3 {
+  font-size: var(--tec-font-size-3);
+  font-family: var(--tec-font-family-sans-serif);
+  font-weight: 700;
+}
+/* remove list-style from back links on individual event listings	 */
+.entry-content ul.tribe-events-sub-nav > li {
+  list-style: none;
 }
 
 /* Content Area
@@ -1732,10 +2539,19 @@ figcaption,
   margin-bottom: 40px;
 }
 
+.entry-content {
+  word-wrap: normal;
+}
+
 .entry-content ol,
 .entry-content ul {
   margin-bottom: 30px;
   padding-left: 40px;
+}
+
+.entry-content ol.mb-28,
+.entry-content ul.mb-28 {
+  margin-bottom: 28px;
 }
 
 .entry-content ol > li {
@@ -1743,12 +2559,13 @@ figcaption,
 }
 
 .entry-content ul > li {
-  list-style-type: disc;
+  list-style-type: square;
+  margin-bottom: 0.3em;
 }
 
 .entry-content ol ul > li,
 .entry-content ul ul > li {
-  list-style-type: circle;
+  list-style-type: square;
 }
 
 .entry-content ol ol,
@@ -1763,6 +2580,10 @@ figcaption,
 .content .sticky {
   background-color: #f5f5f5;
   padding: 30px;
+}
+
+.entry-content .read-more {
+  margin-left: 0.5em;
 }
 
 /* Entry Meta
@@ -1880,6 +2701,803 @@ p.entry-meta {
   padding-left: 10px;
 }
 
+/* Home Page Cover Block
+---------------------------------------------------------------------------- */
+.group-cover {
+  background-color: #bbbec0;
+}
+
+h1.home-page-cover {
+  font-size: 4.063rem;
+  font-size: clamp(2.125rem, 0.6715rem + 6.46vw, 4.063rem);
+  margin-bottom: 50px;
+}
+
+.home-page-cover.one-column-version {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+}
+
+.home-cover a {
+  color: #fff;
+  border-bottom: 1px solid #fff;
+}
+
+.home-cover .wp-block-buttons {
+  margin-bottom: 11px;
+}
+
+/* modify for mobile phones to have text on single lines - Refactor */
+
+.home-cover .home-cover-contact > * {
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+/* Home Page Media-Text block needs to stack sooner due to the length of the content. Adjust the media query. */
+
+.home .wp-block-media-text .wp-block-media-text__content {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.home .wp-block-media-text.is-stacked-on-mobile {
+  -ms-grid-columns: 100%;
+  grid-template-columns: 100%;
+}
+
+.home .wp-block-media-text.is-stacked-on-mobile .wp-block-media-text__media {
+  -ms-grid-column: 1;
+  grid-column: 1;
+  -ms-grid-row: 1;
+  grid-row: 1;
+  min-height: 400px;
+}
+
+.home .wp-block-media-text.is-stacked-on-mobile .wp-block-media-text__content {
+  -ms-grid-column: 1;
+  grid-column: 1;
+  -ms-grid-row: 2;
+  grid-row: 2;
+}
+
+/* Page and Block Customizations
+---------------------------------------------------------------------------- */
+#responsive-menu-pro-container .responsive-menu-pro-search-box {
+  border-radius: 40px !important;
+}
+
+figure.wp-block-image.size-large.is-resized.dawn-signature {
+  margin-top: -40px;
+  margin-bottom: -5px;
+  z-index: -5;
+  position: relative;
+}
+
+/* Testimonials */
+.gb-block-testimonial .gb-testimonial-text p {
+  margin-bottom: 0px;
+}
+
+h2.gb-testimonial-name {
+  font-family: "Red Hat Display", "Arial", sans-serif;
+  font-size: 14px;
+}
+
+.gb-block-testimonial .gb-testimonial-info {
+  min-height: auto;
+  font-size: 15px;
+}
+
+/* Funding & Consulting page */
+.games {
+  max-width: 305px;
+  padding-left: 15px;
+  margin-bottom: 0;
+}
+
+/* Dementia Friendly Communities page - remove white margin, see media queries */
+.dementia-trp {
+  margin-bottom: -40px !important;
+}
+
+/* Juniper Number */
+.juniper-number {
+  font-size: 250%;
+  font-weight: 400;
+  color: #270089;
+  letter-spacing: -1px;
+  margin-bottom: 0;
+  margin-top: -20px;
+}
+
+.juniper-label {
+  font-size: 130%;
+  font-weight: 400;
+  color: #270089;
+  letter-spacing: -1px;
+  margin-top: -16px;
+  padding-bottom: 20px;
+}
+
+/* Linkage Line */
+
+.mimic-btn {
+  background-color: #0d3c6e;
+  border-radius: 2em;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  width: auto;
+}
+
+.mimic-btn a[href^="tel"] {
+  color: #fff;
+  border-bottom: 1px solid CurrentColor;
+}
+
+/* Linkage Line - override pattern style */
+h2.has-background.pd-lr-15 {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Hoarding Page - Save the Date block  add padding for mobile*/
+.save-date-nami .gb-container-inside {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+/* Anchor Tags Adjusting for Sticky Header - Funding and Hoarding Pages
+---------------------------------------------------------------------------- */
+
+.anchor-link-parent > a {
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.anchor-link-target {
+  margin-top: -75px;
+  padding-top: 75px;
+}
+
+/* Funding and Consulting Page - Anchor heading is longer so needs more space on mobile */
+#consulting:target {
+  margin-top: -100px;
+  padding-top: 100px;
+}
+
+/* RFP Page July 2021
+---------------------------------------------------------------------------- */
+
+.wp-block-genesis-blocks-gb-accordion.rfp-accordian.gb-block-accordion
+  .gb-accordion-title {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.h4-rfp {
+  font-family: "Red Hat Display";
+  font-size: 18px;
+  margin-bottom: 0;
+}
+
+.rfp-link {
+  margin-bottom: 5px;
+}
+
+h4.has-text-align-center.h4-rfp {
+  margin-top: 20px;
+}
+
+.rfp-nospace {
+  margin-bottom: 8px;
+}
+
+h1.h1-rfp {
+  margin-top: 30px;
+}
+.rfp-p {
+  margin-bottom: 10px;
+}
+
+.wp-block-button.slide.rfp-button {
+  margin-bottom: 20px;
+}
+
+.mobile-priority table,
+.application-timeline table {
+  word-break: normal;
+}
+
+article.post-7502 h2.gform_title {
+  margin-top: 60px;
+}
+
+/* Custom and Reusable Block Styles
+---------------------------------------------------------------------------- */
+
+/* Reusable Block Quote for Trellis */
+.site-container .wp-block-group.maaa-block-quote,
+.site-container .wp-block-group.tr-block-quote {
+  background-color: var(--green-primary);
+  background-image: url("../../uploads/2021/03/quote-background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.site-container .wp-block-quote.maaa-block-quote,
+.site-container .wp-block-quote.tr-block-quote {
+  padding-top: 6em;
+  padding-bottom: 6em;
+  max-width: 850px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0;
+}
+
+.wp-block-quote.maaa-block-quote.mt-zero {
+  margin-top: 0;
+}
+
+.maaa-block-quote .wp-block-group__inner-container {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.site-container .wp-block-quote.maaa-block-quote p,
+.site-container .wp-block-quote.maaa-block-quote cite {
+  color: var(--global--color-white);
+}
+
+.site-container .wp-block-quote.maaa-block-quote p {
+  font-size: 48px;
+  font-size: clamp(1.75rem, 0.8125rem + 4.1667vw, 3rem);
+  font-family: "Acta Book Italic", "Times New Roman", serif;
+  font-style: normal;
+  line-height: 1.3;
+}
+
+.site-container .wp-block-quote.maaa-block-quote cite {
+  font-size: 16px;
+  font-family: "Red Hat Display", "Arial", sans-serif;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.site-container .wp-block-quote.maaa-long-quote {
+  max-width: 1100px;
+}
+
+.site-container .wp-block-quote.maaa-long-quote p {
+  font-size: 42px;
+  font-size: clamp(1.75rem, 1.0938rem + 2.9167vw, 2.625rem);
+}
+
+.site-container .wp-block-pullquote.post-quote {
+  padding: 1.5em 0;
+}
+
+.site-container .wp-block-pullquote.post-quote p {
+  font-style: normal;
+}
+
+/* added later - not sure where this is used. Marked as quote blog left */
+.quote-left {
+  padding-left: 60px;
+}
+
+/* Three Column Block - add class for each use to have for specificity
+---------------------------------------------------------------------------- */
+.column-color {
+  background-color: var(--maaa-background-secondary);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.padding-two-onefive .wp-block-column {
+  padding: 32px 18px;
+}
+
+.column-color .wp-block-buttons {
+  padding-top: 24px;
+  padding-bottom: 18px;
+}
+
+.site-container .wp-block-pullquote p {
+  font-size: 25px;
+  line-height: 1.5;
+}
+
+/* Three Column Block - Events Block on Home Page
+---------------------------------------------------------------------------- */
+.events-block.gb-block-container {
+  background-color: #edeeef;
+  padding-bottom: 150px;
+  margin-top: 0;
+  /*   check when not logged in */
+  margin-bottom: -25px;
+}
+
+.events-block .wp-block-group.events-block-intro {
+  padding: 150px 50px 100px 50px;
+}
+
+.events-block p.animated {
+  font-weight: 500;
+  max-width: 702px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.events-card {
+  background-color: var(--global--color-white);
+  box-shadow: 0px 0px 14px 0px rgb(0 0 0 / 12%);
+  transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+}
+.events-card .events-card-content {
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 34px;
+}
+.events-block.gb-block-container figure {
+  margin-bottom: 10px;
+}
+
+.events-block h4 {
+  margin: 0 0 20px 0;
+  font-family: "Red Hat Display", "Arial", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 50px 0 10px 0;
+}
+
+.events-card-info {
+  font-weight: 700;
+}
+
+.events-block .events-card-info,
+.events-block .events-card-desc {
+  margin-bottom: 20px;
+}
+
+.events-block.gb-block-container .gb-block-layout-column-inner {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  /* justify-content: space-between; */
+}
+
+.events-card-content .wp-block-group__inner-container {
+  display: flex;
+  flex-direction: column;
+}
+
+p.home_lg {
+  font-size: 24px;
+}
+
+/* Home Page Event Block - Gravity View Version
+---------------------------------------------------------------------------- */
+.gv-event-group,
+.gv-container-6819 {
+  background-color: var(--maaa-background-secondary);
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+.gv-diy-container,
+.gv-container-6819,
+.gv-container-6819 .gv-list-view {
+  display: grid;
+  grid-template-columns: 1fr;
+  column-gap: 2em;
+  row-gap: 2em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.gv-diy-container {
+  justify-items: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .gv-diy-container,
+  .gv-container-6819 {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1em;
+  }
+}
+
+@media only screen and (min-width: 1224px) {
+  .gv-diy-container,
+  .gv-container-6819 {
+    grid-template-columns: 1fr 1fr 1fr;
+    max-width: 1300px;
+    column-gap: 2em;
+  }
+
+  .img-pro,
+  .img-care,
+  .img-comm {
+    padding-left: 40px;
+  }
+}
+
+.gv-diy-view,
+.gv-container-6819 .gv-list-view {
+  display: grid;
+  grid-template-rows: auto 1fr auto 0.85fr auto;
+  background-color: var(--global--color-white);
+  /* margin: 10px; */
+  box-shadow: 0px 0px 14px 0px rgb(0 0 0 / 12%);
+  transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+  max-width: 417px;
+}
+
+.img-pro {
+  background-color: var(--orange-primary);
+  background-image: url(https://trellisconnects.org/wp-content/uploads/2021/03/header_professionals.png);
+}
+
+.img-care {
+  background-color: var(--green-primary);
+  background-image: url(https://trellisconnects.org/wp-content/uploads/2021/03/header_caregiver.png);
+}
+
+.img-comm {
+  background-color: var(--blue-sec-lt);
+  background-image: url(https://trellisconnects.org/wp-content/uploads/2021/03/header_older_adults.png);
+}
+
+.img-pro,
+.img-care,
+.img-comm {
+  text-transform: uppercase;
+  color: white;
+  /* max-width: 100%; */
+  min-height: 132px;
+  background-position: right center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+  font-size: 18px;
+  padding-left: 40px;
+  font-weight: 600;
+}
+
+.gv-diy-view h4,
+.gv-diy-view .events-card-info,
+.gv-diy-view .excerpt {
+  padding: 0 40px;
+}
+.gv-diy-view .wp-block-buttons {
+  padding: 0 40px 40px 40px;
+}
+
+h4.events-block {
+  margin: 0 0 20px 0;
+  font-family: "Red Hat Display", "Arial", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 50px 40px 10px 40px;
+}
+
+.site-container .gv-diy-view .wp-block-button .wp-block-button__link {
+  background-color: var(--blue-sec-md);
+}
+.site-container .gv-diy-view .wp-block-button .wp-block-button__link a {
+  background-color: var(--blue-sec-md);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Three Column Block - Connect Block on Medicare Page
+---------------------------------------------------------------------------- */
+
+.connect-block-three h4,
+.connect-block-three p {
+  padding: 0 30px;
+}
+
+/* Three Column Block - Special Collections Block on Get Help Page
+---------------------------------------------------------------------------- */
+.special-collections .gb-block-layout-column-inner {
+  margin-top: 30px;
+}
+
+/* Two Column Block - Numbers Block on Pension Rights Page
+---------------------------------------------------------------------------- */
+.pension-numbers .gb-layout-column-wrap {
+  row-gap: 3em;
+}
+
+/* Two Column Block - Advisory Committees Block on About Page
+---------------------------------------------------------------------------- */
+.advisory-committees.wp-block-genesis-blocks-gb-container {
+  padding-top: 36px;
+}
+
+/* Profile Block - Leadership Block on About Page
+---------------------------------------------------------------------------- */
+.about-leadership .gb-block-profile.right {
+  flex-wrap: wrap-reverse;
+}
+
+/* Customization for Gravity Form Submit Buttons on Board Application  */
+.gform_wrapper.gravity-theme #gform_save_23_footer_link.button {
+  color: #fff;
+}
+.gform_wrapper.gravity-theme #gform_save_23_footer_link.button > svg > path {
+  fill: #fff;
+}
+
+/* Medicare Counseling Page - Gravity View Customizations
+---------------------------------------------------------------------------- */
+
+/* default is to have box around each item, adjust the spacing between items */
+.gv-container-8080 .gv-list-view {
+  /* border: 1px solid #ddd; */
+  border: none;
+  margin-bottom: 0.5em;
+}
+
+/* default is to have 2/3 width but causes some wrapping on addresses */
+.gv-container-8080 .gv-grid-col-2-3 {
+  width: 100%;
+}
+
+.gv-container-8080 .gv-list-view-content {
+  padding: 0.25em 0 0.3em;
+}
+
+/* adjust spacing below and above each county name */
+
+.medicare-counseling-list h5 {
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+/* don't need both classes, here for clarity */
+
+.gv-list-view-content .medicare-counseling p {
+  margin-bottom: 0;
+  line-height: 1.4;
+}
+
+.gv-list-view-content .medicare-counseling p:first-of-type {
+  font-weight: bold;
+}
+
+/* Older American Act Services Pages - Gravity View Customizations
+---------------------------------------------------------------------------- */
+/* Services Quick Links Page - Grid of Links */
+.services-group .wp-block-group__inner-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  grid-gap: 0.9rem;
+}
+.services-group h2 {
+  padding: 1.8rem;
+  /* Styling */
+  color: #fff;
+  font-weight: 600;
+  font-family: "Red Hat Display", "Arial", sans-serif;
+  font-size: 20px;
+  text-align: center;
+  background-color: var(--blue-sec-lt);
+  margin: 0;
+  border-radius: 25px;
+  /* Centering */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 160px;
+  flex: 0 0 200px;
+}
+.services-group h2 a {
+  color: #fff;
+  margin: 15px 0;
+  line-height: 1.3;
+  border: none;
+  text-decoration: none;
+}
+.services-group h2:hover,
+.services-group h2:focus {
+  background-color: var(--orange-primary);
+  transition: all 0.4s ease;
+}
+
+/* List Pages by Category */
+
+p.oaa-caregiver {
+  margin-bottom: 0;
+}
+.oaa-header {
+  margin-top: 70px;
+  margin-bottom: 15px;
+}
+p.oaa-pre-heading {
+  font-weight: 500;
+}
+p.oaa-breadcrumb {
+  font-size: 20px;
+  font-weight: 500;
+  margin-top: 0px;
+  margin-bottom: 30px;
+  line-height: 1.3;
+}
+.gv-table-view td > a {
+  font-weight: 500;
+}
+
+.remove-bulleted ul.bulleted > li {
+  list-style-type: none;
+}
+.remove-bulleted ul.bulleted {
+  padding-left: 0;
+}
+
+.gv-container-8880 thead th.gv-field-21-3,
+.gv-container-8880 thead th.gv-field-21-42,
+.gv-container-8859 thead th.gv-field-21-3,
+.gv-container-8859 thead th.gv-field-21-42 {
+  width: 20%;
+}
+.gv-container-8880 thead th.gv-field-21-15,
+.gv-container-8859 thead th.gv-field-21-15 {
+  width: 33%;
+}
+.gv-container-8880 thead th.gv-field-21-entry_link,
+.gv-container-8859 thead th.gv-field-21-entry_link {
+  width: 10%;
+}
+
+.gv-container-8880 .gv-table-view tfoot .gv-field-label,
+.gv-container-8859 .gv-table-view tfoot .gv-field-label {
+  display: none;
+}
+
+/* Single Entry Specifics to match Linkage Line presentation results */
+.gv-field-21-26 ul,
+.gv-field-21-27 ul,
+.gv-field-21-29 ul,
+.gv-field-21-31 ul,
+.gv-field-21-32 ul,
+.gv-field-21-36 ul {
+  column-count: 2;
+  padding-left: 20px;
+}
+.gv-field-21-15 ul.bulleted > li {
+  list-style-type: none;
+}
+.gv-field-21-15 ul.bulleted {
+  padding-left: 0;
+}
+.gv-search-clear {
+  margin-left: 1rem;
+}
+
+/* Page spacing */
+.mt-50 {
+  margin-top: 50px;
+}
+.mt-20 {
+  margin-top: 20px;
+}
+.mt-30 {
+  margin-top: 30px;
+}
+.pt-60 {
+  padding-top: 60px;
+}
+.oaa-intro {
+  max-width: 900px;
+}
+/* Entry Form */
+.gfield_visibility_visible #input_21_26,
+.gfield_visibility_visible #input_21_27,
+.gfield_visibility_visible #input_21_29,
+.gfield_visibility_visible #input_21_30,
+.gfield_visibility_visible #input_21_31,
+.gfield_visibility_visible #input_21_32,
+.gfield_visibility_visible #input_21_36 {
+  column-count: 2;
+  margin-bottom: 3rem;
+}
+
+/* Post Grid Common Elements
+---------------------------------------------------------------------------- */
+.gb-block-container.insights-updates {
+  padding: 75px 0;
+}
+
+.gb-block-post-grid header .gb-block-post-grid-title a {
+  color: var(--blue-text) !important;
+  border-bottom: none;
+}
+
+.gb-block-post-grid
+  .gb-block-post-grid-text
+  header
+  .gb-block-post-grid-title
+  a:focus,
+.gb-block-post-grid
+  .gb-block-post-grid-text
+  header
+  .gb-block-post-grid-title
+  a:hover {
+  text-decoration: none;
+}
+
+.horizontal-post-grid.gb-block-post-grid .is-list article {
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr auto;
+  grid-gap: 3rem;
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.horizontal-post-grid .gb-block-post-grid-text {
+  display: flex;
+  flex-direction: column;
+  padding: 0 50px 1rem 50px;
+  justify-content: center;
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 0.4px;
+}
+
+.horizontal-post-grid .gb-block-post-grid-more-link {
+  background-color: var(--blue-sec-md);
+  color: white !important;
+  padding: 12px 24px;
+  border-radius: 2rem;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1;
+  text-decoration: none;
+  border: none;
+}
+
+.gb-block-post-grid-text.half-width:after {
+  display: none;
+}
+
+.home .horizontal-post-grid.half-width {
+  margin-bottom: 0;
+}
+
+.insights.gb-block-post-grid .gb-block-post-grid-more-link {
+  color: var(--maaa-blue-text);
+}
+
+.insights.gb-block-post-grid .gb-block-post-grid-more-link:hover {
+  color: var(--maaa-text-link-hover);
+}
+
+/* Accordions
+---------------------------------------------------------------------------- */
+.wp-block-genesis-blocks-gb-accordion.gb-block-accordion .gb-accordion-title {
+  background-color: var(--maaa-background-secondary);
+}
+
+.gb-accordion-title:focus,
+.gb-accordion-text p {
+  color: var(--blue-text);
+}
+
 /* Sidebar
 ---------------------------------------------------------------------------- */
 
@@ -1896,14 +3514,55 @@ p.entry-meta {
   margin-bottom: 20px;
 }
 
+section#simple-social-icons-2 {
+  text-align: center;
+}
+
 /* Footer Widgets
 ---------------------------------------------------------------------------- */
 
 .footer-widgets {
-  border-top: 1px solid #eee;
-  background-color: #fff;
+  background-color: var(--blue-primary);
+  color: #fff;
   clear: both;
-  padding: 60px 0;
+  padding: 20px 30px 60px;
+}
+
+.footer-widgets .wrap {
+  padding-top: 20px;
+}
+
+.home .footer-widgets .wrap {
+  border-top: 1px solid #fff;
+}
+
+.footer-widgets a {
+  color: #fff;
+  text-decoration: none;
+  border-bottom: none;
+}
+
+.footer-widgets a:hover,
+.footer-widgets a:focus {
+  color: #fff;
+  border-bottom: 1px solid #fff;
+}
+
+.footer-widgets-4 figure {
+  margin-bottom: 20px;
+}
+
+.footer-widgets-4 .logo a:hover,
+.footer-widgets-4 .logo a:focus {
+  border-bottom: none;
+}
+
+#custom_html-5 {
+  margin-bottom: 0;
+}
+
+section#nav_menu-5 {
+  text-align: left;
 }
 
 .footer-widgets .wrap {
@@ -1913,8 +3572,8 @@ p.entry-meta {
 
 .footer-widget-area {
   margin-bottom: 40px;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .footer-widget-area:last-child,
@@ -1922,12 +3581,95 @@ p.entry-meta {
   margin-bottom: 0;
 }
 
+.footer-widget-area p {
+  margin-bottom: 10px;
+}
+
+.footer-widgets {
+  border-top: 1px solid #fff;
+}
+
+.footer-widget-area:last-child {
+  border-top: 1px solid #fff;
+  padding-top: 20px;
+}
+
+.footer-widgets .widget ul > li,
+.footer-widget-area p,
+.footer-widgets-3 .widget_media_image {
+  margin-bottom: 0;
+}
+
+.footer-address {
+  text-align: center;
+  font-size: 1rem;
+}
+
+.sm-images {
+  margin-bottom: 10px;
+}
+
+.sm-icon {
+  margin: 5px;
+}
+
+.search-form-input {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  color: #333;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 8px 12px;
+  width: 100%;
+  border-radius: 30px;
+}
+
+section#custom_html-3 {
+  margin-top: -17px;
+}
+
+.social-media-icons {
+  width: 100%;
+  font-size: 22px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+figure.social-media-icons > a {
+  border-bottom: none;
+}
+
+.social-media-icons a:hover {
+  border-bottom: none;
+  color: var(--blue-sec-lt) !important;
+}
+
+.social-media-icons a:focus {
+  color: var(--blue-sec-lt) !important;
+}
+
+.socialfb,
+.socialli,
+.socialtw {
+  margin: 5px;
+}
+.socialfb {
+  margin-left: 0;
+}
+
+section#media_image-2 {
+  margin-top: 30px;
+  max-width: 260px;
+}
+
 /* Site Footer
 ---------------------------------------------------------------------------- */
 
 .site-footer {
-  background-color: #fff;
-  border-top: 1px solid #eee;
+  background-color: #f5f5f5;
+  color: #444;
   font-size: 15px;
   line-height: 1.5;
   padding: 30px;
@@ -1938,8 +3680,173 @@ p.entry-meta {
   margin-bottom: 0;
 }
 
+.site-footer a {
+  color: var(--maaa-text-link);
+  border-bottom: 1px solid var(--maaa-text-link);
+}
+
+/* Rebranding Styles - some are temporary
+---------------------------------------------------------------------------- */
+.wp-block-media-text.has-ma-purple-background-color {
+  background-color: var(--blue-sec-md);
+}
+
+.wp-block-media-text.has-ma-purple-background-color
+  .wp-block-button
+  .wp-block-button__link:hover {
+  background-color: #fff !important;
+  color: var(--orange-secondary);
+}
+
+.contact-form.has-ma-purple-background-color {
+  background-color: var(--blue-primary);
+}
+
+.wp-block-genesis-blocks-gb-columns.has-ma-olive-background-color {
+  background-color: var(--blue-sec-md);
+}
+
+/* services pages */
+.wp-block-genesis-blocks-gb-columns.has-ma-olive-background-color .gb-button {
+  background-color: var(--orange-secondary);
+}
+
+.wp-block-genesis-blocks-gb-columns.has-ma-olive-background-color
+  .gb-button:hover {
+  background-color: #fff;
+  color: var(--orange-secondary);
+}
+
+.wp-block-genesis-blocks-gb-columns.has-ma-olive-background-color
+  .gb-button:hover,
+.wp-block-genesis-blocks-gb-columns.has-ma-olive-background-color
+  .wp-block-button
+  .wp-block-button__link:hover {
+  background-color: #fff !important;
+  color: var(--orange-secondary) !important;
+}
+
+/* about page */
+.gb-block-container.advisory-committees {
+  background-color: var(--blue-sec-md) !important;
+  color: #fff;
+}
+
+/* career testimonial */
+.wp-block-genesis-blocks-gb-columns.gb-2-col-wideright.has-ma-purple-background-color {
+  background-color: var(--blue-sec-md);
+}
+
+/* leadership blocks */
+.about-leadership .gb-block-profile .gb-profile-text a {
+  color: var(--maaa-text-link);
+  border-color: var(--maaa-text-link-border);
+  box-shadow: none;
+}
+
+.about-leadership .gb-block-profile .gb-profile-text a:hover {
+  color: var(--maaa-text-link-hover);
+  text-decoration: none;
+  box-shadow: inherit;
+}
+
+/* smaller italic intro block */
+p.intro {
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.4;
+  margin-bottom: 30px;
+}
+
 /* Media Queries
 ---------------------------------------------------------------------------- */
+/* Gravity View for Older American Act pages - very specific, could probably be refactored */
+@media only screen and (max-width: 575.98px) {
+  .gv-field-21-15 ul.bulleted,
+  .gv-field-21-42 ul.bulleted {
+    margin-top: 30px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  /* Reverse the stacking order of blocks - usually for media and text blocks to get media on top for mobile */
+  .gb-layout-columns-2.reverse-col-stack-mobile
+    > .gb-layout-column-wrap.gb-is-responsive-column {
+    grid-template-areas: "col2" "col1";
+  }
+
+  /* adjust cover block sizing for mobile */
+  .home-cover.wp-block-cover.is-position-bottom-center {
+    min-height: 400px !important;
+    background-position: 50% 50% !important;
+    background-repeat: no-repeat;
+  }
+
+  /* remove mb-60 class from cover block */
+  .wp-block-group.home-cover-contact {
+    margin-bottom: 0;
+  }
+
+  /* specific to launch post   */
+  .post-6715 figure.alignright,
+  .post-6715 figure.alignright img {
+    margin-left: auto;
+    margin-right: auto;
+    float: none;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  /* Juniper Program Page - Center logo on mobile  */
+  .logo-juniper.wp-block-image .alignright {
+    margin-left: 0;
+    margin-top: -30px;
+  }
+
+  .logo-juniper > figure {
+    position: relative;
+    left: -50%;
+  }
+
+  .logo-juniper > figure > img {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    left: 50%;
+  }
+  /* Home Cover Block */
+
+  .home-cover.wp-block-cover .wp-block-cover__gradient-background {
+    background: rgba(0, 0, 0, 0);
+    background: -webkit-linear-gradient(
+      top,
+      rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.8)
+    ) !important;
+    background: -moz-linear-gradient(
+      top,
+      rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.8)
+    ) !important;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.8)
+    ) !important;
+  }
+  /* give vertical spacing for multi-buttons on mobile */
+  .wp-block-buttons > .wp-block-button {
+    padding: 0.5rem 0;
+  }
+}
+
+/* Specific to OAA Services List pages - could probably be refactored */
+@media only screen and (max-width: 959px) {
+  .oaa-header h1.mt-50 {
+    margin-top: 0;
+  }
+}
 
 @media only screen and (min-width: 480px) {
   table {
@@ -1948,13 +3855,210 @@ p.entry-meta {
   }
 }
 
+@media only screen and (min-width: 601px) {
+  .home-cover .home-cover-contact > * {
+    font-size: 24px;
+  }
+
+  /* Adjusting focal point on tablet & desktop; size still cover */
+  .home-cover.wp-block-cover {
+    background-position: center top 53% !important;
+    /*     min-height: 600px !important; */
+  }
+
+  .wp-block-group.home-cover-contact {
+    margin-bottom: 15%;
+  }
+
+  /* add clamp */
+  .gb-block-post-grid-header {
+    margin-bottom: 20px;
+  }
+
+  .gb-block-post-grid.featuredpost .is-list .gb-block-post-grid-title {
+    font-size: 2.625rem;
+    font-size: clamp(2.125rem, 1.75rem + 1.67vw, 2.625rem);
+  }
+
+  .gb-block-post-grid-more-link {
+    margin-top: 20px;
+  }
+
+  h2.award {
+    max-width: 450px;
+  }
+  /*  Caregiver Events Calendar  */
+  #caregiverevents {
+    scroll-margin-top: 10rem;
+  }
+}
+
+/* Move when final width is set Match to the Responsive Menu */
+
+@media only screen and (min-width: 768px) {
+  .site-header div:first-of-type {
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /*Funding and Hoarding Pages - Adjust anchor for sticky header on desktop  */
+
+  .anchor-link-target {
+    margin-top: -200px !important;
+    padding-top: 200px;
+  }
+
+  /* spacing to remove 'stripes' of blank space above footer */
+
+  /* MailChimp Contact Form */
+  div[class*="gb-layout"].alignfull.contact-form {
+    margin-bottom: -60px;
+  }
+
+  .mb-mba-block {
+    margin-bottom: -60px !important;
+  }
+
+  .on-top-footer {
+    margin-bottom: -60px !important;
+  }
+
+  .col-on-top-footer {
+    margin-bottom: -60px !important;
+  }
+  /* Footer widgets */
+  .footer-widgets .wrap {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .footer-widgets-1 {
+    width: 20%;
+  }
+
+  .footer-widgets-2 {
+    width: 18%;
+  }
+
+  .footer-widgets-3 {
+    width: 25%;
+  }
+
+  .footer-widgets-4 {
+    width: 25%;
+    margin-top: -36px;
+  }
+
+  .footer-widgets-5 {
+    width: 28%;
+    margin-top: -36px;
+  }
+
+  .footer-widget-area:last-child {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .footer-address {
+    text-align: left;
+    margin-left: 2em;
+  }
+
+  .home .footer-widgets-3 .social-media-icons {
+    display: none;
+  }
+
+  .footer-widgets-3 .social-media-icons {
+    justify-content: start;
+  }
+
+  .footer-widgets-4 .widget {
+    float: right;
+  }
+
+  .footer-widgets-4 figure {
+    margin-top: 0;
+  }
+
+  /*  Pension Rights Post Grid -- Check against customizer
+ 	------------------------------------------------------  */
+  .gb-block-post-grid.pension-rights-grid
+    .gb-block-post-grid-text
+    p:last-of-type {
+    margin-top: -15px;
+  }
+  .pension-rights-grid {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .gb-block-post-grid.forty-pct-img .is-list article {
+    grid-template-columns: 40% 1fr;
+    grid-gap: 0 3.2em;
+  }
+
+  .gb-block-post-grid.forty-pct-img.alternate-img-text article:nth-child(even) {
+    grid-template-columns: 1fr 40%;
+  }
+  .alternate-img-text article:nth-child(even) .gb-block-post-grid-text {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  }
+  .alternate-img-text article:nth-child(even) .gb-block-post-grid-image {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+  }
+
+  /* Gravity View for Older American Act services pages
+ 	------------------------------------------------------  */
+  .gv-table-single-container.gv-container-8880 th,
+  .gv-table-single-container.gv-container-8859 th {
+    text-align: right;
+  }
+}
+
+@media (min-width: 801px) {
+  /* Home Page - Media Text Block force to stack earlier 
+	-------------------------------------------------------------- */
+
+  .home .wp-block-media-text.is-stacked-on-mobile {
+    -ms-grid-columns: 1fr 50%;
+    grid-template-columns: 1fr 50%;
+  }
+
+  .home .wp-block-media-text.is-stacked-on-mobile .wp-block-media-text__media {
+    -ms-grid-column: 2;
+    grid-column: 2;
+    -ms-grid-row: 1;
+    grid-row: 1;
+  }
+
+  .home
+    .wp-block-media-text.is-stacked-on-mobile
+    .wp-block-media-text__content {
+    -ms-grid-column: 1;
+    grid-column: 1;
+    -ms-grid-row: 1;
+    grid-row: 1;
+    padding-top: 160px;
+    padding-bottom: 160px;
+  }
+
+  /* Grid Post Block    */
+  .gb-block-container.insights-updates {
+    padding: 135px 0 125px 0;
+  }
+}
+
 @media only screen and (min-width: 960px) {
   /* Site Header
 	--------------------------------------------- */
 
   .site-header {
+    position: -webkit-sticky;
     position: sticky;
     top: 0;
+    width: 100%;
     z-index: 9999;
   }
 
@@ -1962,11 +4066,27 @@ p.entry-meta {
     top: 32px;
   }
 
-  /* Genesis Menu
-	--------------------------------------------- */
+  .max-800 {
+    max-width: 800px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  /* Genesis Menu Desktop Customizations - also see mobile/base values
+	--------------------------------------------------------------------- */
 
   .genesis-nav-menu .menu-item {
     display: inline-block;
+  }
+
+  /* snippet from Marcy Diaz to add arrow	 */
+  .genesis-nav-menu > .menu-item-has-children > a::after {
+    content: "\f347";
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+    font: normal 16px/1 "dashicons";
+    padding-left: 3px;
+    vertical-align: top;
   }
 
   .genesis-nav-menu .menu-item:focus,
@@ -1990,12 +4110,18 @@ p.entry-meta {
 
   .genesis-nav-menu > .menu-highlight > a:focus,
   .genesis-nav-menu > .menu-highlight > a:hover {
-    background-color: #0073e5;
+    background-color: var(--orange-primary);
+  }
+
+  .genesis-nav-menu .sub-menu .menu-item {
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 0;
   }
 
   .genesis-nav-menu .sub-menu,
   .genesis-nav-menu .sub-menu a {
-    width: 180px;
+    width: 225px;
   }
 
   .genesis-nav-menu .sub-menu {
@@ -2007,8 +4133,7 @@ p.entry-meta {
   }
 
   .genesis-nav-menu .sub-menu a {
-    border: 1px solid #eee;
-    border-top: 0;
+    border-top: 1px solid #eee;
     padding-bottom: 15px;
     padding-top: 15px;
   }
@@ -2017,12 +4142,38 @@ p.entry-meta {
     margin: -46px 0 0 179px;
   }
 
+  /* change current-menu-item to gray background */
+  .genesis-nav-menu .sub-menu a {
+    background-color: var(--maaa-background-secondary);
+    background-color: #ebeff5;
+    color: var(--blue-primary);
+    border-top: 1px solid gray;
+    font-size: 16px;
+    position: relative;
+    word-wrap: break-word;
+  }
+
+  .genesis-nav-menu .sub-menu .current-menu-item a,
+  .genesis-nav-menu .sub-menu current-menu-item > a:focus,
+  .genesis-nav-menu .sub-menu current-menu-item > a:hover,
+  .genesis-nav-menu .sub-menu a:focus,
+  .genesis-nav-menu .sub-menu a:hover {
+    color: var(--global--color-white) !important;
+    text-decoration: none;
+    background-color: var(--blue-primary);
+    border-bottom: 4px solid var(--blue-primary);
+    transition: border 0.1s ease-out 0.1s;
+  }
+
   /* Responsive Menu
 	--------------------------------------------- */
 
   .js .nav-primary {
     display: block;
-    padding-top: 15px;
+    padding-top: 61px;
+  }
+  .genesis-responsive-menu {
+    display: block;
   }
 
   .menu-toggle,
@@ -2043,6 +4194,231 @@ p.entry-meta {
   .nav-primary .genesis-nav-menu a {
     padding-left: 15px;
     padding-right: 15px;
+  }
+
+  /* Secondary (Banner) Menu
+	--------------------------------------------- */
+
+  .nav-secondary {
+    margin: 0;
+    display: block;
+    padding-left: 30px;
+    padding-right: 30px;
+    position: sticky;
+    z-index: 9999;
+    top: 0px;
+  }
+
+  .nav-secondary .wrap {
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .nav-secondary ul.genesis-nav-menu {
+    margin-bottom: 1px;
+  }
+  .nav-secondary .genesis-nav-menu li {
+    color: #fff;
+  }
+
+  .nav-secondary .genesis-nav-menu .current-menu-item.menu-item-object-page > a,
+  .nav-secondary .genesis-nav-menu .sub-menu .current-menu-item > a:focus,
+  .nav-secondary .genesis-nav-menu .sub-menu .current-menu-item > a:hover {
+    color: #fff !important;
+    outline: 1px #ccc solid !important;
+    border-bottom: none;
+  }
+
+  .nav-secondary .genesis-nav-menu .current-menu-item.menu-item-home > a {
+    color: #fff !important;
+    outline: 0px !important;
+    border-bottom: none;
+  }
+
+  .nav-secondary a {
+    color: white;
+    padding: 10px;
+    border-bottom: none;
+  }
+
+  .admin-bar .site-header {
+    top: 77px;
+  }
+
+  .admin-bar .nav-secondary {
+    top: 32px;
+  }
+
+  .site-header {
+    top: 45px;
+  }
+
+  /* banner menu search */
+
+  .menu-secondary .search-form {
+    display: none;
+    width: 300px;
+    z-index: 9999;
+    padding: 0;
+    border: 1px solid var(--blue-primary);
+    border-radius: 30px;
+    line-height: 1.2;
+  }
+
+  .menu-secondary .search-form input[type="search"] {
+    padding: 6px 12px;
+  }
+
+  .menu-secondary .search-form .search-form-submit {
+    top: 0;
+    right: 0;
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  .menu-secondary .search-form .search-submit:hover {
+    outline: 1px solid #ccc;
+  }
+
+  .menu-secondary .search {
+    display: inline-flex;
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+
+  .menu-secondary .active .search-form {
+    display: block;
+  }
+
+  /* button animations */
+  .slide a,
+  .sliderm .gb-block-post-grid-more-link,
+  .gb-block-newsletter.slide input[type="submit"],
+  .gform_wrapper .button,
+  .gform_button.button,
+  .gv-grid .button,
+  .post-6461 #mc-embedded-subscribe {
+    background: linear-gradient(
+      to right,
+      var(--orange-primary) 50%,
+      var(--blue-sec-md) 50%
+    );
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: all 0.4s ease;
+  }
+
+  .slidewo a {
+    background: linear-gradient(to right, #ffffff 50%, #f47f32 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: all 0.4s ease;
+  }
+
+  .slidewb a {
+    background: linear-gradient(to right, #142e53 50%, #ffffff 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: all 0.4s ease;
+  }
+
+  .btn-color-bw.slidewb a {
+    color: var(--blue-primary);
+  }
+
+  .btn-color-bw.slidewb a:hover,
+  .wp-block-buttons .btn-services.slidewb.btn-color-bw a:hover,
+  .gb-block-newsletter.slide input[type="submit"]:hover,
+  .post-6461 #mc-embedded-subscribe:hover {
+    color: var(--global--color-white) !important;
+  }
+
+  .slide a:hover,
+  .sliderm .gb-block-post-grid-more-link:hover,
+  .slidewo a:hover,
+  .slidewb a:hover,
+  .gb-block-newsletter.slide input[type="submit"]:hover,
+  .gform_wrapper .button:hover,
+  .gform_button.button:hover,
+  .gv-grid .button:hover,
+  .post-6461 #mc-embedded-subscribe:hover {
+    background-position: left bottom;
+  }
+
+  #mc-embedded-subscribe {
+    background: linear-gradient(to right, #ffffff 50%, var(--blue-primary) 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    margin-left: 10px;
+    transition: all 0.4s ease;
+  }
+  #mc-embedded-subscribe:hover {
+    background-position: left bottom;
+    color: #142e53;
+  }
+  /* end button animations */
+
+  /* customizations - About Page Annual Report
+	--------------------------------------------- */
+
+  .home-hero .wp-block-cover__inner-container {
+    max-width: 800px;
+  }
+  .home-hero .home-hero-text h1 {
+    font-size: 59px;
+    line-height: 0.95;
+    margin-bottom: 0;
+    margin-top: 60px;
+    padding: 0 !important;
+  }
+
+  .home-hero-text1 {
+    font-size: 29px;
+    padding: 0 !important;
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+
+  .home-hero-text2 {
+    font-size: 21px;
+    text-transform: uppercase;
+    padding: 0 !important;
+    margin-bottom: 0;
+    font-weight: 400;
+  }
+
+  .home-hero-text-year {
+    font-size: 173px;
+    padding: 0 !important;
+    font-family: "Acta Book", "Times New Roman", serif;
+    margin: 0 0 30px -10px;
+    line-height: 0.8;
+    letter-spacing: -2px;
+  }
+
+  .home-hero a {
+    padding: 0 !important;
+    margin-bottom: 30px;
+  }
+
+  /* Titles
+	--------------------------------------------- */
+
+  .insights .entry-title,
+  .insights {
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
+
+  /* custom class to set standard spacing across pages with h1 under cover image */
+  h1.title {
+    margin-top: 60px;
   }
 
   /* Site-Inner
@@ -2075,7 +4451,7 @@ p.entry-meta {
 
   .sidebar {
     float: right;
-    width: 30%;
+    width: 28%;
   }
 
   .sidebar-content .sidebar {
@@ -2174,13 +4550,137 @@ p.entry-meta {
 	--------------------------------------------- */
 
   .footer-widgets .wrap {
-    max-width: 1140px;
+    max-width: 1300px;
   }
 
   .footer-widget-area {
     float: left;
     margin-bottom: 0;
-    width: calc(100% / 3);
+  }
+
+  /*  Page and Block Customization for desktop */
+
+  /* LinkageLine Page  */
+  .mimic-btn {
+    font-size: 24px;
+    padding: 10px 30px;
+    width: 75%;
+  }
+
+  /* remove 'stripes' of blank space above footer */
+
+  /* MailChimp Contact Form */
+  div[class*="gb-layout"].alignfull.contact-form {
+    margin-bottom: -80px;
+  }
+
+  .mb-mba-block {
+    margin-bottom: -60px !important;
+  }
+
+  .on-top-footer {
+    margin-bottom: -70px !important;
+  }
+
+  /* contain text to 80% of block and center on desktop */
+  .mw-desk-80pc {
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  /* alter padding on media-text block to allow for wider text on desktop	 */
+  .wp-block-media-text.mt-wider-text .wp-block-media-text__content {
+    padding-left: 10%;
+    padding-right: 20%;
+  }
+
+  .wp-block-media-text.has-media-on-the-right.mt-wider-text
+    .wp-block-media-text__content {
+    padding-left: 30px;
+    padding-right: 60px;
+    max-width: 680px;
+    justify-self: end;
+  }
+
+  /* Home page Post Grids ??  */
+  .horizontal-post-grid.gb-block-post-grid .is-list article {
+    grid-template-columns: 50% 1fr;
+    grid-template-rows: 1fr;
+    grid-gap: 0;
+  }
+
+  .horizontal-post-grid article:nth-child(odd) .gb-block-post-grid-text {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    /* align with 1300px site container  */
+    padding: 30px 5em 20px 30px;
+    justify-self: end;
+  }
+
+  .horizontal-post-grid .gb-block-post-grid-text {
+    padding-left: 75px;
+    max-width: 650px;
+    /* align with 1300px site container */
+    padding-left: 5em;
+    padding-right: 15px;
+  }
+
+  .horizontal-post-grid article:nth-child(odd) .gb-block-post-grid-image {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+  }
+
+  .gv-table-view-content th {
+    width: 20%;
+  }
+
+  /* Dementia Friendly Communities page - remove white margin, see mobile */
+  .dementia-trp {
+    margin-bottom: -60px !important;
+  }
+
+  /*  Pension Rights Post Grid -- Check against customizer
+ 	------------------------------------------------------  */
+  .pension-rights-grid {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /*  Caregiver Community Calendar
+ 	------------------------------------------------------  */
+  .caregiver-events-monthly .wp-block-group.wp-container-2.alignwide,
+  .caregiver-events-monthly
+    .wp-block-group.wp-container-2.alignwide
+    .tribe-events-view--month.alignwide,
+  h1.wide-calendar {
+    max-width: 1200px;
+  }
+
+  /* Gravity Forms & Views
+	---------------------------------------------------------------------------- */
+
+  /* Single Entry - Presentations */
+  .gv-table-single-container.gv-container-3900 th {
+    text-align: right;
+  }
+}
+
+/* Final width is set for Responsive Menu */
+@media only screen and (min-width: 1200px) {
+  .title-area {
+    float: left;
+    padding-bottom: 25px;
+    padding-top: 25px;
+  }
+
+  /*  Pension Rights Post Grid 
+ 	------------------------------------------------------  */
+  .full-width-content .entry-content > .pension-rights-grid.alignwide {
+    margin-left: -205px;
+    margin-right: -205px;
+    max-width: calc(100% + 410px);
   }
 }
 

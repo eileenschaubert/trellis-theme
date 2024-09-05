@@ -270,10 +270,10 @@ function genesis_sample_comments_gravatar( $args ) {
 // Customizations
 
 // Test Code for secondary style sheet
-add_action( 'wp_enqueue_scripts', 'wsm_custom_stylesheet', 20 );
-function wsm_custom_stylesheet() {
-    wp_enqueue_style( 'custom-style', get_stylesheet_directory_uri() . '/custom.css' );
-}
+// add_action( 'wp_enqueue_scripts', 'wsm_custom_stylesheet', 20 );
+// function wsm_custom_stylesheet() {
+//     wp_enqueue_style( 'custom-style', get_stylesheet_directory_uri() . '/custom.css' );
+// }
 
 
 /** Customize Read More Text */
